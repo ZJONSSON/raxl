@@ -23,7 +23,7 @@ module.exports = async function(directory, options) {
           .pipe(etl.map(async d => {
             sharedStrings = sharedStrings || await sharedStringsPromise;
             let row = [];
-            d.value.c.forEach(d => {
+            [].concat(d.value.c).forEach(d => {
               const col = lettersToNumber(/([A-Z]+)/.exec(d.__attr__.r)[1]);
               if (!d.v && !d.is) return;
 
